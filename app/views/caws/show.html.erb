@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Message:</strong>
+  <%= @caw.message %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @caw.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_caw_path(@caw) %> |
+<%= link_to 'Back', caws_path %>

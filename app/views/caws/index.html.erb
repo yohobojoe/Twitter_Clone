@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Caws</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Message</th>
+      <th>User</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @caws.each do |caw| %>
+      <tr>
+        <td><%= caw.message %></td>
+        <td><%= caw.user_id %></td>
+        <td><%= link_to 'Show', caw %></td>
+        <td><%= link_to 'Edit', edit_caw_path(caw) %></td>
+        <td><%= link_to 'Destroy', caw, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Caw', new_caw_path %>
