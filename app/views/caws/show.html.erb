@@ -7,7 +7,7 @@
 
 <p>
   <strong>User:</strong>
-  <%= @caw.user_id %>
+  <%= "@#{@caw.user.username}" %>
 </p>
 
 <%= link_to 'Edit', edit_caw_path(@caw) %> |

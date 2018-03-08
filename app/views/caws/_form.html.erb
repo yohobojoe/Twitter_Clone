@@ -11,17 +11,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :message %>
-    <%= form.text_field :message, id: :caw_message %>
+<div class="form-group">
+    <%= form.text_field :message, placeholder: "@#{current_user.username} is thinking about...", class: "form-control" %>
   </div>
 
   <div class="field">
-    <%= form.label :user_id %>
-    <%= form.number_field :user_id, id: :caw_user_id %>
+    <%= form.hidden_field :user_id, value: current_user.id %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group">
+    <%= form.submit "Caw Caw!", class: "btn btn-primary" %>
   </div>
 <% end %>
