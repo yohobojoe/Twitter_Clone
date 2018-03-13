@@ -7,6 +7,8 @@ Rails.application.routes.draw do
 
   get 'unfollow' => 'epicenter#unfollow'
 
+  get 'tag_caws' => 'epicenter#tag_caws'
+
   resources :caws
   devise_for :users
 

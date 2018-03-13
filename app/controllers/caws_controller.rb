@@ -26,7 +26,23 @@ class CawsController < ApplicationController
   # POST /caws
   # POST /caws.json
   def create
-    @caw = Caw.new(caw_params)
+    @caw = Caw.create(caw_params)
+
+    message_arr = @caw.message.split(" ")
+
+    message_arr.each_with_index do |word, index|
+      if word[0] == "#"
+        if Tag.pluck(:phrase).include?(word)
+          tag = Tag.find_by(phrase: word)
+        else
+          tag = Tag.create(phrase: word)
+        end
+        caw_tag = CawTag.create(caw_id: @caw.id, tag_id: tag.id)
+        message_arr[index] = "<a href='/tag_caws?id=#{tag.id}'>#{word}</a>"
+      end
+    end
+
+    @caw.update(message: message_arr.join(" "))
 
     respond_to do |format|
       if @caw.save
@@ -71,6 +87,6 @@ class CawsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def caw_params
-      params.require(:caw).permit(:message, :user_id)
+      params.require(:caw).permit(:message, :user_id, :link)
     end
 end

@@ -14,4 +14,8 @@ class EpicenterController < ApplicationController
 
   def unfollow
   end
+
+  def tag_caws
+    @tag = Tag.find(params[:id])
+  end
 end

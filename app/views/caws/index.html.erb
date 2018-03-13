@@ -14,7 +14,7 @@
   <tbody>
     <% @caws.each do |caw| %>
       <tr>
-        <td><%= caw.message %></td>
+        <td><%= caw.message.html_safe %></td>
         <td><%= caw.user_id %></td>
         <td><%= link_to 'Show', caw %></td>
         <td><%= link_to 'Edit', edit_caw_path(caw) %></td>
